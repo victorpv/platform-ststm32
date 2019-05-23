@@ -6,9 +6,21 @@
     "f_cpu": "84000000L",
     "ldscript": "stm32f401xe.ld",
     "mcu": "stm32f401ret6",
-    "variant": "stm32f401xe"
+    "variant": "NUCLEO_F401RE"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F401RE",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "svd_path": "STM32F401xE.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "cmsis",
     "spl",
@@ -17,19 +29,14 @@
   "name": "ST Nucleo F401RE",
   "upload": {
     "maximum_ram_size": 98304,
-    "maximum_size": 524288
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-F401RE/",
   "vendor": "ST"

@@ -2,33 +2,40 @@
   "build": {
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32L053xx",
-    "f_cpu": "48000000L",
-    "mcu": "stm32l053r8t6"
+    "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
+    "mcu": "stm32l053r8t6",
+    "variant": "NUCLEO_L053R8"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32L053R8",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32l0",
+    "svd_path": "STM32L053x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
   "name": "ST Nucleo L053R8",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 65536
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v2-1.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32l0.cfg"
-          ]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 65536,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-L053R8/",
   "vendor": "ST"
